@@ -17,7 +17,7 @@ interface Props {
 
 const Container = styled.section`
 	margin: auto;
-	max-width: 100%;
+	max-width: 92%;
 	& > form {
 		display: flex;
 		flex-direction: column;
@@ -132,7 +132,7 @@ export const BlogForm = ({ id }: Props) => {
 				/>
 				<TextField
 					name="Cover Image"
-					label="image"
+					label="Image"
 					required
 					value={formik.values.image}
 					onBlur={formik.handleBlur}

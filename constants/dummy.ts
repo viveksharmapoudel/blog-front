@@ -1,7 +1,7 @@
 export const dummyOneBlog = {
 	created_at: "2022-01-31T04:20:52Z",
 	title: "This is the first card.",
-	tag: ["first", "nepal", "check"],
+	tags: ["first", "nepal", "check"],
 	user_name: "vivek",
 	id: 1,
 	image:
@@ -14,7 +14,7 @@ export const dummyBlogs = [
 	{
 		created_at: "2022-01-31T04:20:52Z",
 		title: "This is the first card.",
-		tag: ["first", "nepal", "check"],
+		tags: ["first", "nepal", "check"],
 		user_name: "vivek",
 		id: 1,
 		image:
@@ -25,7 +25,7 @@ export const dummyBlogs = [
 	{
 		created_at: "2022-01-31T04:20:52Z",
 		title: "This is the second card.",
-		tag: ["first", "nepal", "check"],
+		tags: ["first", "nepal", "check"],
 		user_name: "vivek",
 		id: 1,
 		image:
@@ -36,7 +36,7 @@ export const dummyBlogs = [
 	{
 		created_at: "2022-01-31T04:20:52Z",
 		title: "This is the third card.",
-		tag: ["first", "nepal", "check"],
+		tags: ["first", "nepal", "check"],
 		user_name: "vivek",
 		id: 1,
 		image:
@@ -47,7 +47,7 @@ export const dummyBlogs = [
 	{
 		created_at: "2022-01-31T04:20:52Z",
 		title: "This is the forth card.",
-		tag: ["first", "nepal", "check"],
+		tags: ["first", "nepal", "check"],
 		user_name: "vivek",
 		id: 1,
 		image:
@@ -58,7 +58,7 @@ export const dummyBlogs = [
 	{
 		created_at: "2022-01-31T04:20:52Z",
 		title: "This is the fifth card.",
-		tag: ["first", "nepal", "check"],
+		tags: ["first", "nepal", "check"],
 		user_name: "vivek",
 		id: 1,
 		image:

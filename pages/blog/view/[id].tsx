@@ -3,11 +3,9 @@ import moment from "moment";
 import { GetServerSideProps } from "next";
 import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import { json } from "stream/consumers";
 import styled from "styled-components";
 import { THEME } from "../../../config/theme";
 import { fetchBlogDummy } from "../../../services";
-import draftToHtml from "draftjs-to-html";
 
 const Container = styled.div`
 	max-width: 92%;
@@ -79,13 +77,6 @@ const BlogDetail = ({ id }: any) => {
 		keepPreviousData: false,
 	});
 
-	useEffect(() => {
-		const parsedData = blogData?.content
-			? draftToHtml(JSON.parse(blogData?.content))
-			: "";
-		setHtml(parsedData);
-	}, [blogData]);
-
 	if (blogLoading || !blogData) {
 		return (
 			<Container>
@@ -110,16 +101,7 @@ const BlogDetail = ({ id }: any) => {
 						<span key={`${item}_${idx}`}>#{item}</span>
 					))}
 			</div>
-			<div className="content-wrapper">
-				{html ? (
-					<div
-						className="html-content"
-						dangerouslySetInnerHTML={{
-							__html: `${html}`,
-						}}
-					></div>
-				) : null}
-			</div>
+			<p className="content-wrapper"></p>
 		</Container>
 	);
 };
