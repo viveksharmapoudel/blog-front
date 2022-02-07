@@ -71,7 +71,7 @@ export const BlogCard: React.FC<IBlogListCard> = ({
 	id,
 }) => {
 	const onClick = () => {
-		Router.push(`/blog/${id}`);
+		Router.push(`/blog/view/${id}`);
 	};
 	return (
 		<Wrapper onClick={onClick}>

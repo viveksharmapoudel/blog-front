@@ -63,7 +63,7 @@ export const BlogListCard: React.FC<IProps> = ({
 						style={{ color: THEME.colors.gray6 }}
 					/>
 					<EyeOutlined
-						onClick={() => router.push(`/blog/${id}`)}
+						onClick={() => router.push(`/blog/view/${id}`)}
 						title="View"
 						style={{ color: THEME.colors.gray6 }}
 					/>

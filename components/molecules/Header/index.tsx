@@ -112,7 +112,7 @@ export const Header = () => {
 	const PopComponent = () => {
 		return (
 			<POPUP>
-				<span onClick={() => router.push("/dashboard")}>Dashboard</span>
+				<span onClick={() => router.push("/blog")}>Dashboard</span>
 				<span onClick={() => router.push("/signout")}>Sign Out</span>
 			</POPUP>
 		);
@@ -147,7 +147,11 @@ export const Header = () => {
 						</div>
 						{!user ? (
 							<div className="logged-in">
-								<Button type="ghost" borderradius={5}>
+								<Button
+									type="ghost"
+									borderradius={5}
+									onClick={() => router.push("/blog/add")}
+								>
 									Create Post
 								</Button>
 								<Popover placement="bottomLeft" content={<PopComponent />}>

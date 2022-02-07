@@ -5,8 +5,8 @@ import React, { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { json } from "stream/consumers";
 import styled from "styled-components";
-import { THEME } from "../../config/theme";
-import { fetchBlogDummy } from "../../services";
+import { THEME } from "../../../config/theme";
+import { fetchBlogDummy } from "../../../services";
 import draftToHtml from "draftjs-to-html";
 
 const Container = styled.div`

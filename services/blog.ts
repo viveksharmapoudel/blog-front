@@ -16,6 +16,18 @@ interface IQueryKey {
 // 	return dummyOneBlog;
 // };
 
+export const addBlog = (values: any): Promise<any> => {
+	return API.post("/blog", values);
+};
+
+export const updateBlog = (values: any): Promise<any> => {
+	return API.put(`/blog/${values.id}`, values);
+};
+
+export const deleteBlog = (id: number) => {
+	return API.delete(`/blog/${id}`);
+};
+
 export const fetchBlogDummy = (id: number) => {
 	// return API.get(`/`);
 	console.log("test", id);

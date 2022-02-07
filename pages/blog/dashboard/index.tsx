@@ -2,9 +2,9 @@ import { Empty, Spin } from "antd";
 import React from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
-import { BlogListCard } from "../../components";
-import { dummyBlogs } from "../../constants";
-import { IBlog } from "../../interfaces";
+import { BlogListCard } from "../../../components";
+import { IBlog } from "../../../interfaces";
+import { fetchBlogsDummy } from "../../../services";
 
 const Container = styled.div`
 	max-width: 100%;
@@ -25,13 +25,13 @@ const Spinner = styled.div`
 	align-items: center;
 	justify-content: center;
 `;
-const Dashboard = () => {
+const BlogList = () => {
 	const {
 		data: blogs,
 		isLoading: blogLoading,
 		isError,
 		isSuccess,
-	} = useQuery<any, any>(["fetchBlog"], () => dummyBlogs, {
+	} = useQuery<any, any>(["fetchBlog"], () => fetchBlogsDummy, {
 		enabled: true,
 		refetchOnWindowFocus: false,
 		retry: false,
@@ -64,4 +64,4 @@ const Dashboard = () => {
 	);
 };
 
-export default Dashboard;
+export default BlogList;
