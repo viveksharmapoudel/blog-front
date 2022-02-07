@@ -1,1 +1,1 @@
-export const interfaces = "interface";
+export * from "./blog";

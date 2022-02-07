@@ -11,7 +11,7 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0px;
     padding: 0px;
     height:100%;
-    font-family: "yugothic-regular", sans-serif;
+    font-family: "Roboto", sans-serif;
   }
 
   p, h1, h2, h3, h4 {

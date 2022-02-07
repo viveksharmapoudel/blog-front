@@ -1,9 +1,11 @@
 import { AppProps } from "next/app";
 import React from "react";
 import Head from "next/head";
+import "antd/dist/antd.css";
 import { GlobalStyles } from "../styles/global-styles";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { AuthContextProvider } from "../store/AuthContext";
+import { Footer, Header } from "../components";
 
 const queryClient = new QueryClient({ defaultOptions: {} });
 
@@ -18,10 +20,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 				/>
 			</Head>
 			<GlobalStyles />
+			<Header />
 			<QueryClientProvider client={queryClient}>
 				<AuthContextProvider>
 					<Component {...pageProps} />
 				</AuthContextProvider>
+				<Footer />
 			</QueryClientProvider>
 		</>
 	);
