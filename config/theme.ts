@@ -4,6 +4,7 @@ const colors = {
 	red: "#f5222d",
 	lightBlack: "#595958",
 	white: "#ffffff",
+	gray2: "#fafafa",
 	gray3: "#f4f4f4",
 	gray4: "#eeeeee",
 	gray5: "#acacac",
@@ -11,6 +12,7 @@ const colors = {
 	gray7: "#6d6c6b",
 	gray8: "#73738c",
 	redPurple: "#953553",
+	lightGreen: "#8BC846",
 };
 
 const typographyCommon = {

@@ -43,6 +43,7 @@ interface IProps {
 	className?: string;
 	width?: string;
 	autoComplete?: "on" | "off" | "new-password";
+	hidden?: boolean;
 }
 
 const StyledInput = styled(Input)`
@@ -186,6 +187,7 @@ const TextField: FC<IProps> = ({
 	onBlur,
 	allowClear = true,
 	autoComplete = "off",
+	hidden = false,
 	...rest
 }) => {
 	const getCounterUI = () => {
@@ -273,6 +275,7 @@ const TextField: FC<IProps> = ({
 							value={value}
 							allowClear={allowClear}
 							autoComplete={autoComplete}
+							hidden={hidden}
 							{...rest}
 						/>
 					</TextFieldWrapper>

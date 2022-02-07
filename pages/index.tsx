@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { BlogCard } from "../components";
+import { THEME } from "../config/theme";
 import { fetchMemes } from "../services";
 
 const Container = styled.div`

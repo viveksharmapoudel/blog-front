@@ -7,8 +7,6 @@ interface AuthContext {
 	setAuthenticated: (authenticated: boolean) => void;
 	user: any;
 	setUser: (user: any) => void;
-	collapsed: any;
-	setCollapsed: (collapsed: any) => void;
 }
 
 const [useContext, CtxProvider] = createCtx<AuthContext>();
@@ -25,7 +23,6 @@ export const AuthContextProvider = ({ children }: Props) => {
 
 	const [authenticated, setAuthenticated] = useState<boolean>(!!token);
 	const [user, setUser] = useState(null);
-	const [collapsed, setCollapsed] = useState(null);
 
 	return (
 		<CtxProvider
@@ -34,8 +31,6 @@ export const AuthContextProvider = ({ children }: Props) => {
 				setAuthenticated,
 				user,
 				setUser,
-				collapsed,
-				setCollapsed,
 			}}
 		>
 			{children}

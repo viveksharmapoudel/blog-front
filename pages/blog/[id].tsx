@@ -86,8 +86,6 @@ const BlogDetail = ({ id }: any) => {
 		setHtml(parsedData);
 	}, [blogData]);
 
-	console.log("testt", blogData);
-
 	if (blogLoading || !blogData) {
 		return (
 			<Container>

@@ -1,98 +1,141 @@
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import styled from "styled-components";
-import { Button, ButtonProps } from "antd";
+import { Button as AntButton } from "antd";
+import { useRouter } from "next/router";
 import { THEME } from "../../../config/theme";
 
-interface IProps {
-	children?: ReactNode;
-	type?: "primary" | "ghost" | "dashed" | "link" | "text" | "default";
-	block?: boolean;
-	danger?: boolean;
-	size?: "large" | "middle" | "small";
+type ButtonType = "primary" | "ghost";
+export interface ButtonProps {
+	children?: React.ReactNode;
+	htmlType?: "button" | "submit" | "reset";
+	type?: ButtonType;
+	fullwidth?: boolean;
+	padding?: string;
+	loading?: boolean;
+	admin?: boolean | 1 | 0;
 	disabled?: boolean;
-	ghost?: boolean;
 	href?: string;
 	icon?: ReactNode;
-	loading?: boolean;
-	target?: string;
-	className?: string;
-	onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-	height?: string;
-	minWidth?: string;
-	width?: string;
+	minheight?: number;
+	minwidth?: number;
+	withshadow?: boolean;
 	background?: string;
+	borderradius?: number;
+	rounded?: boolean;
+	typography?: any;
+	className?: string;
 	color?: string;
-	fontSize?: string;
-	fontWeight?: string;
-	padding?: string;
-	border?: string;
-	borderradius?: string;
+	fontsize?: number;
+	bold?: boolean;
+	margin?: string;
+	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const StyledButton = styled(Button)`
-	padding: ${({ padding }: IProps) => padding || ".5em 1.5em"};
-	height: ${({ height }: IProps) => height || "42px"};
-	min-width: ${({ minWidth }: IProps) => minWidth || "100px"};
-	width: ${({ width }: IProps) => width && width};
-	background: ${({ background }: IProps) => background || THEME.colors.primary};
-	color: ${({ color }: IProps) => (color ? color : THEME.colors.white)};
-	font-size: ${({ fontSize }: IProps) => fontSize || "16px"};
-	font-weight: ${({ fontWeight }: IProps) => fontWeight || "600 !important"};
-	border: ${({ border }: IProps) => border || "none"};
-	border-radius: ${({ borderradius }: IProps) => borderradius || "4px"};
-	&:hover,
-	&:focus,
-	&:active {
-		background: ${({ background }: IProps) => background || THEME.colors.white};
-		color: ${({ color }: IProps) => color || THEME.colors.primary};
+const Wrapper = styled.div`
+	display: contents;
+	& .ant-btn-primary {
+		background-color: ${({ admin }: ButtonProps) => {
+			return admin ? THEME.colors.primary : THEME.colors.primary;
+		}};
+		color: ${THEME.colors.gray8};
 	}
-	&:hover {
-		opacity: 0.8;
-	}
-
-	&[disabled],
-	&[disabled]:hover {
-		background: ${({ background }: IProps) =>
-			background || THEME.colors.secondary};
-		color: ${({ color }: IProps) => color || THEME.colors.primary};
+	& .ant-btn-ghost {
+		border: 1px solid ${THEME.colors.primary};
+		background: ${THEME.colors.white};
+		color: ${THEME.colors.primary};
 	}
 `;
+const StyledButton = styled(AntButton)`
+	&[disabled] {
+		background-color: ${({ admin }: ButtonProps) => {
+			return admin
+				? `${THEME.colors.primary} !important`
+				: `${THEME.colors.white} !important`;
+		}};
+		opacity: ${({ admin }: ButtonProps) => {
+			return admin && 0.7;
+		}};
+		border: none;
+		box-shadow: none !important;
+		color: ${({ admin }: ButtonProps) => {
+			return admin
+				? `${THEME.colors.white} !important`
+				: `rgba(0, 0, 0, 0.25) !important`;
+		}};
+	}
 
-const ButtonComponent: FC<IProps> = ({
+	border-radius: ${({ borderradius, rounded, admin }: ButtonProps) => {
+		return rounded
+			? "30px"
+			: borderradius
+			? `${borderradius}px`
+			: admin
+			? "2px"
+			: "2px";
+	}};
+	font-family: "Roboto", sans-serif;
+	background: ${({ background }: ButtonProps) => {
+		return background && `${background} !important`;
+	}};
+	border: none;
+	box-shadow: ${({ withshadow }: ButtonProps) => {
+		return withshadow
+			? "-1.22465e-15px 20px 20px rgba(4, 0, 0, 0.08) !important"
+			: "none !important";
+	}};
+	margin: ${({ margin }: ButtonProps) => {
+		return margin && margin;
+	}};
+	padding: ${({ padding }: ButtonProps) => {
+		return padding && `${padding} !important`;
+	}};
+	font-size: ${({ fontsize }: ButtonProps) => {
+		return fontsize ? `${fontsize}px` : "14px";
+	}};
+	color: ${({ color }: ButtonProps) => {
+		return color && `${color} !important`;
+	}};
+	font-weight: ${({ bold }: ButtonProps) => {
+		return bold && "bold";
+	}};
+	min-width: ${({ minwidth }: ButtonProps) => {
+		return minwidth ? `${minwidth}px` : "auto";
+	}};
+	min-height: ${({ minheight }: ButtonProps) => {
+		return minheight ? `${minheight}px` : "auto";
+	}};
+	${({ typography }: ButtonProps) => {
+		if (typography) {
+			return typography;
+		}
+	}}
+`;
+
+export const Button: React.FC<ButtonProps> = ({
 	children,
-	block,
-	danger,
-	disabled,
-	ghost,
-	href,
-	icon,
-	loading,
-	size,
-	target,
-	type,
+	fullwidth,
 	onClick,
+	href,
+	htmlType,
+	loading,
 	className,
+	admin,
 	...rest
 }) => {
+	const router = useRouter();
 	return (
-		<StyledButton
-			block={block}
-			danger={danger}
-			disabled={disabled}
-			ghost={ghost}
-			href={href}
-			icon={icon}
-			loading={loading}
-			size={size}
-			target={target}
-			type={type}
-			onClick={onClick}
-			className={className}
-			{...rest}
-		>
-			{children}
-		</StyledButton>
+		<Wrapper admin={admin}>
+			<StyledButton
+				onClick={href ? () => router.push(href) : onClick}
+				admin={admin ? 1 : 0}
+				htmlType={htmlType}
+				block={fullwidth}
+				loading={loading}
+				className={className}
+				{...rest}
+			>
+				{children}
+			</StyledButton>
+		</Wrapper>
 	);
 };
-
-export { ButtonComponent as Button };

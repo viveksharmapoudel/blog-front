@@ -20,9 +20,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 				/>
 			</Head>
 			<GlobalStyles />
-			<Header />
 			<QueryClientProvider client={queryClient}>
 				<AuthContextProvider>
+					<Header />
 					<Component {...pageProps} />
 				</AuthContextProvider>
 				<Footer />
