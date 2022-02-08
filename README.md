@@ -1,4 +1,4 @@
-This is a nextjs template for creating frontend web app with proper folder structure.
+This is a simple frontend portion of project Blog created using Nextjs. Add .env file referencing .env.example file.
 
 ## Getting Started
 
