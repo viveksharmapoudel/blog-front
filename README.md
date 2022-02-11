@@ -15,3 +15,10 @@ npm run dev
 # or
 yarn dev
 ```
+
+Todos:
+- [x] Project setup
+- [x] Blog crud 
+- [ ] authentication for user implementation
+- [ ] Search feature in blog
+- [ ] infinite scroll in blog feature.
